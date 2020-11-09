@@ -22,10 +22,6 @@ module Api::V1
 
     private
 
-    def soql_application_service
-      Force::Soql::ApplicationService.new(current_user)
-    end
-
     def soql_preference_service
       Force::Soql::PreferenceService.new(current_user)
     end
@@ -47,7 +43,7 @@ module Api::V1
     end
 
     def lease_up_apps_params
-      params.permit(:application_number, :listing_id, :page, :preference, :first_name, :last_name, :status, :accessibility)
+      params.permit(:search, :listing_id, :page, :preference, :status, :accessibility, :total_household_size)
     end
   end
 end

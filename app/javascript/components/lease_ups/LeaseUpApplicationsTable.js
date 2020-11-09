@@ -93,8 +93,6 @@ const LeaseUpApplicationsTable = ({
     },
     { Header: 'First Name', accessor: 'first_name', Cell: resizableCell, className: 'text-left' },
     { Header: 'Last Name', accessor: 'last_name', Cell: resizableCell, className: 'text-left' },
-    { Header: 'Phone', accessor: 'phone', Cell: resizableCell, className: 'text-left' },
-    { Header: 'Email', accessor: 'email', Cell: resizableCell, className: 'text-left' },
     {
       Header: 'Accessibility Requests',
       accessor: 'accessibility',
@@ -102,11 +100,24 @@ const LeaseUpApplicationsTable = ({
       className: 'text-left'
     },
     {
-      Header: 'Status Updated',
+      Header: 'HH',
+      accessor: 'total_household_size',
+      Cell: resizableCell,
+      headerClassName: 'text-right td-min-narrow',
+      className: 'text-right td-min-narrow'
+    },
+    {
+      Header: 'Updated',
       accessor: 'status_last_updated',
-      headerClassName: 'td-offset-right text-right',
-      className: 'td-offset-right text-right',
+      headerClassName: 'text-right td-min-narrow',
+      className: 'text-right td-min-narrow',
       Cell: cellFormat.date
+    },
+    {
+      Header: 'Substatus',
+      accessor: 'sub_status',
+      headerClassName: 'td-offset-right',
+      className: 'td-offset-right text-right td-min-wide'
     },
     {
       Header: 'Lease Up Status',

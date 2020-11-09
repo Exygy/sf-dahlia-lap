@@ -1,10 +1,13 @@
 {
-    "standard.validate": [
-        "javascript",
-        "javascriptreact",
-    ],
-    "javascript.validate.enable": false,
+    "javascript.validate.enable": true,
     "jest.disabledWorkspaceFolders": [
         "spec/javascript/e2e"
-    ]
+    ],
+    "editor.codeActionsOnSave": {
+        // For ESLint
+        "source.fixAll.eslint": true,
+    },
+    "eslint.format.enable": true,
+    "eslint.lintTask.enable": true,
+    "jest.runAllTestsFirst": false,
 }

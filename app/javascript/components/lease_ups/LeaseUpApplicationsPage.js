@@ -157,7 +157,11 @@ const LeaseUpApplicationsPage = () => {
         each(applications, (app, index) => {
           if (app.application_id === applicationId) {
             updateResults(`[${index}]['lease_up_status']`, status)
-            updateResults(`[${index}]['status_updated']`, moment().format(SALESFORCE_DATE_FORMAT))
+            updateResults(
+              `[${index}]['status_last_updated']`,
+              moment().format(SALESFORCE_DATE_FORMAT)
+            )
+            updateResults(`[${index}]['sub_status']`, subStatus)
           }
         })
 

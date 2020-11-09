@@ -36,7 +36,7 @@ export const Input = ({
   <input
     {...input}
     id={id || `form-${fieldName}`}
-    className={(meta.error && meta.touched && 'error') || ''}
+    className={classNames({ error: meta.error && meta.touched })}
     type={type}
     maxLength={maxLength}
     aria-labelledby={ariaLabelledby}
@@ -92,12 +92,7 @@ export const InputField = ({
   >
     {({ input, meta }) => (
       <>
-        <div
-          className={classNames(
-            label && 'form-group',
-            (meta.error && meta.touched && 'error') || ''
-          )}
-        >
+        <div className={classNames({ 'form-group': label, error: meta.error && meta.touched })}>
           <Label
             label={label}
             id={id || `form-${fieldName}`}
@@ -208,7 +203,7 @@ export const SelectField = ({
         disabled && disabledOptions ? disabledOptions : labelize(options, {}, noPlaceholder)
       return (
         <>
-          <div className={classNames('form-group', (meta.error && meta.touched && 'error') || '')}>
+          <div className={classNames('form-group', { error: meta.error && meta.touched })}>
             <Label
               label={label}
               id={id || `form-${fieldName}`}
@@ -223,7 +218,7 @@ export const SelectField = ({
               }}
               id={id || `form-${fieldName}`}
               name={input.name}
-              className={classNames(className, (meta.error && meta.touched && 'error') || '')}
+              className={classNames(className, { error: meta.error && meta.touched })}
               {...(selectValue && { value: selectValue })}
               {...(disabled && { disabled })}
             >
@@ -246,7 +241,7 @@ export const CheckboxField = ({ fieldName, label, blockNote, validation, id, ari
   <Field name={fieldName} validate={validation} type='checkbox'>
     {({ input, meta }) => (
       <>
-        <div className={classNames('form-group', (meta.error && meta.touched && 'error') || '')}>
+        <div className={classNames('form-group', { error: meta.error && meta.touched })}>
           <Input
             input={input}
             type='checkbox'
@@ -295,7 +290,7 @@ export const TextCheckboxField = ({
       initialValue={initialValue}
     >
       {({ input, meta }) => (
-        <div className={classNames('form-group', (meta.error && meta.touched && 'error') || '')}>
+        <div className={classNames('form-group', { error: meta.error && meta.touched })}>
           <Input
             input={input}
             type='hidden'
@@ -411,7 +406,7 @@ export const TextAreaField = ({
           <textarea
             {...input}
             id={id || `form-${fieldName}`}
-            className={(meta.error && meta.touched && 'error') || ''}
+            className={classNames({ error: meta.error && meta.touched })}
             placeholder={placeholder}
             maxLength={maxLength}
             cols={cols}

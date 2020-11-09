@@ -37,11 +37,10 @@ preferences:
     Application__r.General_Lottery_Rank__c:
     Application__r.Applicant__r.First_Name__c:
     Application__r.Applicant__r.Last_Name__c:
-    Application__r.Applicant__r.Email__c:
-    Application__r.Applicant__r.Phone__c:
     Application__r.Applicant__r.Residence_Address__c:
     Application__r.Applicant__r.Mailing_Address__c:
     Application__r.Has_ADA_Priorities_Selected__c:
+    Application__r.Total_Household_Size__c:
     Preference_Order__c:
     Receives_Preference__c:
     Preference_All_Name__c:
@@ -49,6 +48,7 @@ preferences:
     Post_Lottery_Validation__c:
     Preference_Lottery_Rank__c:
     Receives_Preference__c:
+    Application__r.Sub_Status__c:
     Application__r.Processing_Status__c:
       label: "Lease Up Status"
     LastModifiedDate:

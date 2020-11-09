@@ -1,0 +1,10 @@
+// Styles for the MultiSelect.js component
+
+.input-custom-height {
+  // Don't override input height and margin values
+  input {
+    height: initial;
+    margin: initial;
+  }
+}
+

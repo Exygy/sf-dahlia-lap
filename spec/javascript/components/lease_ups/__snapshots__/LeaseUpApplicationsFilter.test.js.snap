@@ -1,0 +1,221 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LeaseUpApplicationsFilter it matches the expected snapshot with default preferences 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "batch": [Function],
+      "blur": [Function],
+      "change": [Function],
+      "destroyOnUnregister": false,
+      "focus": [Function],
+      "getFieldState": [Function],
+      "getRegisteredFields": [Function],
+      "getState": [Function],
+      "initialize": [Function],
+      "isValidationPaused": [Function],
+      "mutators": Object {},
+      "pauseValidation": [Function],
+      "registerField": [Function],
+      "reset": [Function],
+      "resetFieldState": [Function],
+      "restart": [Function],
+      "resumeValidation": [Function],
+      "setConfig": [Function],
+      "submit": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <form
+    noValidate={true}
+    onSubmit={[Function]}
+  >
+    <div
+      className="filter-row"
+    >
+      <div
+        className="filter-group"
+      >
+        <div
+          className="filter-group_item"
+        >
+          <SearchField
+            fieldName="search"
+            id="test-search"
+            onClearClick={[Function]}
+            placeholder="Application, First Name, Last Name..."
+          />
+        </div>
+        <div
+          className="filter-group_action"
+        >
+          <Button
+            className="small primary"
+            disabled={true}
+            noBottomMargin={false}
+            text="Search"
+            type="submit"
+          />
+        </div>
+        <div
+          className="filter-group_item"
+        >
+          <SelectField
+            fieldName="preference"
+            options={
+              Array [
+                Object {
+                  "label": "Any Preference",
+                  "value": "",
+                },
+                Object {
+                  "label": "pref option 1",
+                  "value": "pref option 1",
+                },
+                Object {
+                  "label": "pref option 2",
+                  "value": "pref option 2",
+                },
+                Object {
+                  "label": "General",
+                  "value": "general",
+                },
+              ]
+            }
+            placeholder="Preference"
+          />
+        </div>
+        <div
+          className="filter-group_item"
+        >
+          <SelectField
+            fieldName="total_household_size"
+            options={
+              Array [
+                Object {
+                  "label": "Any HH Members",
+                  "value": "",
+                },
+                Object {
+                  "label": "1",
+                  "value": "1",
+                },
+                Object {
+                  "label": "2",
+                  "value": "2",
+                },
+                Object {
+                  "label": "3",
+                  "value": "3",
+                },
+                Object {
+                  "label": "4",
+                  "value": "4",
+                },
+                Object {
+                  "label": "5+",
+                  "value": "5+",
+                },
+              ]
+            }
+          />
+        </div>
+        <div
+          className="filter-group_item"
+        >
+          <SelectField
+            fieldName="status"
+            options={
+              Array [
+                Object {
+                  "label": "Any Status",
+                  "value": "",
+                },
+                Object {
+                  "label": "No Status",
+                  "value": "No Status",
+                },
+                Object {
+                  "commentRequired": true,
+                  "label": "Processing",
+                  "statusClassName": "is-processing",
+                  "value": "Processing",
+                },
+                Object {
+                  "label": "Withdrawn",
+                  "statusClassName": "is-withdrawn",
+                  "value": "Withdrawn",
+                },
+                Object {
+                  "commentRequired": true,
+                  "label": "Appealed",
+                  "statusClassName": "is-appealed",
+                  "value": "Appealed",
+                },
+                Object {
+                  "commentRequired": true,
+                  "label": "Waitlisted",
+                  "statusClassName": "is-waitlisted",
+                  "value": "Waitlisted",
+                },
+                Object {
+                  "commentRequired": true,
+                  "label": "Disqualified",
+                  "statusClassName": "is-disqualified",
+                  "value": "Disqualified",
+                },
+                Object {
+                  "commentRequired": true,
+                  "label": "Approved",
+                  "statusClassName": "is-approved",
+                  "value": "Approved",
+                },
+                Object {
+                  "label": "Lease Signed",
+                  "statusClassName": "is-leased",
+                  "value": "Lease Signed",
+                },
+              ]
+            }
+            placeholder="Status"
+          />
+        </div>
+        <div
+          className="filter-group_item"
+        >
+          <SelectField
+            fieldName="accessibility"
+            options={
+              Array [
+                Object {
+                  "label": "Any Accessibility Request",
+                  "value": "",
+                },
+                Object {
+                  "label": "Mobility",
+                  "value": "Mobility impairments",
+                },
+                Object {
+                  "label": "Vision/Hearing",
+                  "value": "Vision impairments, Hearing impairments",
+                },
+              ]
+            }
+            placeholder="Accessibility Requests"
+          />
+        </div>
+        <div
+          className="filter-group_action"
+        >
+          <button
+            className="small"
+          >
+            Filter
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ContextProvider>
+`;

@@ -34,13 +34,43 @@ module Force
 
         filters = ''
         filters += "and Preference_All_Name__c like '%#{opts[:preference]}' " if opts[:preference].present?
-        filters += "and Application__r.Name like '%#{opts[:application_number]}%' " if opts[:application_number].present?
-        filters += "and Application__r.Applicant__r.First_Name__c like '%#{opts[:first_name]}%' " if opts[:first_name].present?
-        filters += "and Application__r.Applicant__r.Last_Name__c like '%#{opts[:last_name]}%' " if opts[:last_name].present?
         filters += "and Application__r.Processing_Status__c = " + (opts[:status] == 'No Status' ? 'NULL' : "'#{opts[:status]}'") if opts[:status].present?
         filters += "and Application__r.Has_ADA_Priorities_Selected__c INCLUDES (#{accessibility_string}) " if opts[:accessibility].present?
 
+        if opts[:total_household_size].present?
+          if opts[:total_household_size] == '5+'
+            filters += "and Application__r.Total_Household_Size__c >= 5 "
+          else
+            filters += "and Application__r.Total_Household_Size__c = #{opts[:total_household_size]} "
+          end
+        end
+
         filters
+    end
+
+    def buildAppPreferencesSearch(search_terms_string)
+      # Given a comma-separated list of search terms:
+      # For each term, we search across name and application number for a match
+      # For multiple terms, we expect the record to match each of the terms individually.
+      search_terms = search_terms_string.split(',')
+      search_fields = [
+        "Application__r.Name",
+        "Application__r.Applicant__r.First_Name__c",
+        "Application__r.Applicant__r.Last_Name__c",
+      ]
+      search = []
+      for search_term in search_terms
+        # For each term we join the fields with OR to return a record if it matches
+        # across any of these fields.
+        search_term_clause = []
+        sanitized_term = ActiveRecord::Base.sanitize_sql_like search_term
+        for search_field in search_fields
+          search_term_clause.push("#{search_field} like '%#{sanitized_term}%'")
+        end
+        search.push('(' + search_term_clause.join(' OR ') + ')')
+      end
+      # If there are multiple terms, join the clauses with "AND" because we expect each term to find a match.
+      search.join(' AND ')
     end
 
     private
@@ -52,12 +82,14 @@ module Force
       # complexity of the query we are dynamically adding filters
       # within the WHERE clause with the helper function above. The
       # Preference_All_Name and Preference_All_Lottery_Rank fields
-      # were added to bring all prefernces into the same query.
+      # were added to bring all preferences into the same query.
       filters = buildAppPreferencesFilters(opts)
+      search = opts[:search] ? buildAppPreferencesSearch(opts[:search]) : nil
       builder.from(:Application_Preference__c)
              .select(query_fields(:app_preferences_for_listing))
              .where(%(
                 Listing_ID__c = '#{opts[:listing_id].length >= 18 ? opts[:listing_id][0...-3] : opts[:listing_id]}'
+                #{search ? 'AND (' + search + ')' : ''}
                 #{filters}
                 and \(\(Preference_Lottery_Rank__c != null and Receives_Preference__c = true\)
                 or \(Preference_Name__c = 'Live or Work in San Francisco Preference' and Application__r.General_Lottery_Rank__c != null\)\)

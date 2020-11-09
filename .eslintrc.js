@@ -75,6 +75,8 @@ module.exports = {
     'react/prop-types': 'off',
     'react/display-name': 'off',
     'react/state-in-constructor': 0,
+    'react/self-closing-comp': 'error',
+
     // eventually I'd like to turn the camelcase rule on for properties,
     // but for now there is enough snake case in our app that this will be a pain.
     camelcase: 'off'
