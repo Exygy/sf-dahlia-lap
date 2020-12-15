@@ -20,6 +20,7 @@ const LeaseUpTableContainer = ({
     loading,
     onBulkCheckboxClick,
     onCloseStatusModal,
+    onFetchData,
     onFilter,
     onLeaseUpStatusChange,
     onSubmitStatusModal,
@@ -76,6 +77,7 @@ const LeaseUpTableContainer = ({
         onLeaseUpStatusChange={onLeaseUpStatusChange}
         onCellClick={handleCellClick}
         loading={loading}
+        onFetchData={onFetchData}
         pages={pages}
         rowsPerPage={rowsPerPage}
         atMaxPages={atMaxPages}

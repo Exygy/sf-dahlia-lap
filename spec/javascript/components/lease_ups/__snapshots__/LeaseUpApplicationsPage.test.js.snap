@@ -398,6 +398,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                 "onBulkCheckboxClick": [Function],
                 "onClearSelectedApplications": [Function],
                 "onCloseStatusModal": [Function],
+                "onFetchData": [Function],
                 "onFilter": [Function],
                 "onLeaseUpStatusChange": [Function],
                 "onSelectAllApplications": [Function],
@@ -443,7 +444,6 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                   className="loading-panel"
                 >
                   <ReactFinalForm
-                    initialValues={Object {}}
                     onSubmit={[Function]}
                     render={[Function]}
                   >
@@ -2470,6 +2470,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
               loading={false}
               onBulkCheckboxClick={[Function]}
               onCellClick={[Function]}
+              onFetchData={[Function]}
               onLeaseUpStatusChange={[Function]}
               pages={NaN}
               rowsPerPage={20}
@@ -2810,7 +2811,6 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                 noDataText="No results, try adjusting your filters"
                 ofText="of"
                 onFetchData={[Function]}
-                onPageChange={[Function]}
                 originalKey="_original"
                 page={0}
                 pageJumpText="jump to page"
@@ -6346,7 +6346,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                 <DummyInput
                                                                                   aria-autocomplete="list"
                                                                                   disabled={false}
-                                                                                  id="react-select-9-input"
+                                                                                  id="react-select-21-input"
                                                                                   innerRef={[Function]}
                                                                                   onBlur={[Function]}
                                                                                   onChange={[Function]}
@@ -6369,7 +6369,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                       }
                                                                                     }
                                                                                     disabled={false}
-                                                                                    id="react-select-9-input"
+                                                                                    id="react-select-21-input"
                                                                                     onBlur={[Function]}
                                                                                     onChange={[Function]}
                                                                                     onFocus={[Function]}
@@ -6381,7 +6381,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                       aria-autocomplete="list"
                                                                                       className="css-62g3xt-dummyInput"
                                                                                       disabled={false}
-                                                                                      id="react-select-9-input"
+                                                                                      id="react-select-21-input"
                                                                                       onBlur={[Function]}
                                                                                       onChange={[Function]}
                                                                                       onFocus={[Function]}
@@ -9700,7 +9700,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                 <DummyInput
                                                                                   aria-autocomplete="list"
                                                                                   disabled={false}
-                                                                                  id="react-select-10-input"
+                                                                                  id="react-select-22-input"
                                                                                   innerRef={[Function]}
                                                                                   onBlur={[Function]}
                                                                                   onChange={[Function]}
@@ -9723,7 +9723,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                       }
                                                                                     }
                                                                                     disabled={false}
-                                                                                    id="react-select-10-input"
+                                                                                    id="react-select-22-input"
                                                                                     onBlur={[Function]}
                                                                                     onChange={[Function]}
                                                                                     onFocus={[Function]}
@@ -9735,7 +9735,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                       aria-autocomplete="list"
                                                                                       className="css-62g3xt-dummyInput"
                                                                                       disabled={false}
-                                                                                      id="react-select-10-input"
+                                                                                      id="react-select-22-input"
                                                                                       onBlur={[Function]}
                                                                                       onChange={[Function]}
                                                                                       onFocus={[Function]}
@@ -13054,7 +13054,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                 <DummyInput
                                                                                   aria-autocomplete="list"
                                                                                   disabled={false}
-                                                                                  id="react-select-11-input"
+                                                                                  id="react-select-23-input"
                                                                                   innerRef={[Function]}
                                                                                   onBlur={[Function]}
                                                                                   onChange={[Function]}
@@ -13077,7 +13077,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                       }
                                                                                     }
                                                                                     disabled={false}
-                                                                                    id="react-select-11-input"
+                                                                                    id="react-select-23-input"
                                                                                     onBlur={[Function]}
                                                                                     onChange={[Function]}
                                                                                     onFocus={[Function]}
@@ -13089,7 +13089,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                       aria-autocomplete="list"
                                                                                       className="css-62g3xt-dummyInput"
                                                                                       disabled={false}
-                                                                                      id="react-select-11-input"
+                                                                                      id="react-select-23-input"
                                                                                       onBlur={[Function]}
                                                                                       onChange={[Function]}
                                                                                       onFocus={[Function]}
@@ -16408,7 +16408,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                 <DummyInput
                                                                                   aria-autocomplete="list"
                                                                                   disabled={false}
-                                                                                  id="react-select-12-input"
+                                                                                  id="react-select-24-input"
                                                                                   innerRef={[Function]}
                                                                                   onBlur={[Function]}
                                                                                   onChange={[Function]}
@@ -16431,7 +16431,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                       }
                                                                                     }
                                                                                     disabled={false}
-                                                                                    id="react-select-12-input"
+                                                                                    id="react-select-24-input"
                                                                                     onBlur={[Function]}
                                                                                     onChange={[Function]}
                                                                                     onFocus={[Function]}
@@ -16443,7 +16443,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                       aria-autocomplete="list"
                                                                                       className="css-62g3xt-dummyInput"
                                                                                       disabled={false}
-                                                                                      id="react-select-12-input"
+                                                                                      id="react-select-24-input"
                                                                                       onBlur={[Function]}
                                                                                       onChange={[Function]}
                                                                                       onFocus={[Function]}
@@ -19762,7 +19762,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                 <DummyInput
                                                                                   aria-autocomplete="list"
                                                                                   disabled={false}
-                                                                                  id="react-select-13-input"
+                                                                                  id="react-select-25-input"
                                                                                   innerRef={[Function]}
                                                                                   onBlur={[Function]}
                                                                                   onChange={[Function]}
@@ -19785,7 +19785,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                       }
                                                                                     }
                                                                                     disabled={false}
-                                                                                    id="react-select-13-input"
+                                                                                    id="react-select-25-input"
                                                                                     onBlur={[Function]}
                                                                                     onChange={[Function]}
                                                                                     onFocus={[Function]}
@@ -19797,7 +19797,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                       aria-autocomplete="list"
                                                                                       className="css-62g3xt-dummyInput"
                                                                                       disabled={false}
-                                                                                      id="react-select-13-input"
+                                                                                      id="react-select-25-input"
                                                                                       onBlur={[Function]}
                                                                                       onChange={[Function]}
                                                                                       onFocus={[Function]}
@@ -23116,7 +23116,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                 <DummyInput
                                                                                   aria-autocomplete="list"
                                                                                   disabled={false}
-                                                                                  id="react-select-14-input"
+                                                                                  id="react-select-26-input"
                                                                                   innerRef={[Function]}
                                                                                   onBlur={[Function]}
                                                                                   onChange={[Function]}
@@ -23139,7 +23139,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                       }
                                                                                     }
                                                                                     disabled={false}
-                                                                                    id="react-select-14-input"
+                                                                                    id="react-select-26-input"
                                                                                     onBlur={[Function]}
                                                                                     onChange={[Function]}
                                                                                     onFocus={[Function]}
@@ -23151,7 +23151,7 @@ exports[`LeaseUpApplicationsPage should match the snapshot 1`] = `
                                                                                       aria-autocomplete="list"
                                                                                       className="css-62g3xt-dummyInput"
                                                                                       disabled={false}
-                                                                                      id="react-select-14-input"
+                                                                                      id="react-select-26-input"
                                                                                       onBlur={[Function]}
                                                                                       onChange={[Function]}
                                                                                       onFocus={[Function]}

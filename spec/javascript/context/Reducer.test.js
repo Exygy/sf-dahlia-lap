@@ -1,7 +1,5 @@
 import Reducer, {
   ACTION_TYPE_APPLICATION_LOADED,
-  ACTION_TYPE_APPLICATION_TABLE_FILTERS_APPLIED,
-  ACTION_TYPE_APPLICATION_TABLE_PAGE_CHANGED,
   ACTION_TYPE_LEFT_APPLICATION_SCOPE,
   ACTION_TYPE_LEFT_LISTING_SCOPE,
   ACTION_TYPE_SELECTED_APPLICATION_CHANGED,
@@ -20,12 +18,6 @@ const mockState = {
       number: 'listingName',
       applicantFullName: 'jeremy beremy'
     }
-  },
-  applicationsListData: {
-    appliedFilters: {
-      preferences: ['pref1']
-    },
-    page: 1
   },
   someOtherStateData: {
     someOtherStateKey: 'someOtherStateValue'
@@ -88,15 +80,11 @@ describe('Reducer', () => {
   })
 
   describe('ACTION_TYPE_LEFT_LISTING_SCOPE', () => {
-    test('should only delete listing data and applicationsList data', () => {
+    test('should only delete listing data', () => {
       const newState = Reducer(mockState, getMockAction(ACTION_TYPE_LEFT_LISTING_SCOPE))
 
       expect(newState).toEqual({
         ...mockState,
-        applicationsListData: {
-          appliedFilters: {},
-          page: 0
-        },
         breadcrumbData: {
           ...mockState.breadcrumbData,
           listing: {
@@ -104,40 +92,6 @@ describe('Reducer', () => {
             name: null,
             buildingAddress: null
           }
-        }
-      })
-    })
-  })
-
-  describe('ACTION_TYPE_APPLICATION_TABLE_FILTERS_APPLIED', () => {
-    test('should reset the page and filtersApplied only', () => {
-      const newState = Reducer(
-        mockState,
-        getMockAction(ACTION_TYPE_APPLICATION_TABLE_FILTERS_APPLIED, { preferences: ['pref2'] })
-      )
-
-      expect(newState).toEqual({
-        ...mockState,
-        applicationsListData: {
-          appliedFilters: { preferences: ['pref2'] },
-          page: 0
-        }
-      })
-    })
-  })
-
-  describe('ACTION_TYPE_APPLICATION_TABLE_PAGE_CHANGED', () => {
-    test('should update the page only', () => {
-      const newState = Reducer(
-        mockState,
-        getMockAction(ACTION_TYPE_APPLICATION_TABLE_PAGE_CHANGED, 3)
-      )
-
-      expect(newState).toEqual({
-        ...mockState,
-        applicationsListData: {
-          ...mockState.applicationsListData,
-          page: 3
         }
       })
     })

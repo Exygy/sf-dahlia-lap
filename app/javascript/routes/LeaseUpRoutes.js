@@ -8,29 +8,23 @@ import LeaseUpListingsPage from 'components/lease_ups/LeaseUpListingsPage'
 import SupplementalApplicationPage from 'components/supplemental_application/SupplementalApplicationPage'
 import appPaths from 'utils/appPaths'
 
-// List of URLs that need to be routed via rails but that conflict with react-routed
-// paths. Ex: /applicaitons/flagged matches the /applications/:applicationId route, but
-// should be routed via rails instead.
-const conflictingPathsWithoutRouting = [
-  appPaths.toApplicationsFlaggedIndexBase(),
-  appPaths.toApplicationEdit(':applicationId')
-]
-
 const LeaseUpRoutes = () => (
   <Switch>
-    {/* Rendering null redirects to rails routing */}
-    {conflictingPathsWithoutRouting.map((path) => (
-      <Route key={path} exact path={path} render={() => null} />
-    ))}
     <Route exact path={appPaths.toListingLeaseUps(':listingId')}>
       <LeaseUpApplicationsPage />
     </Route>
     <Route exact path={appPaths.toLeaseUps()}>
       <LeaseUpListingsPage />
     </Route>
-    <Route exact path={appPaths.toApplicationSupplementals(':applicationId')}>
-      <SupplementalApplicationPage />
-    </Route>
+    <Route
+      exact
+      path={appPaths.toApplicationSupplementals(':applicationId')}
+      render={({ match }) => (
+        // TODO: Convert SupplementalApplicationPage to functional components and use
+        // hooks to get path params.
+        <SupplementalApplicationPage applicationId={match.params.applicationId} />
+      )}
+    />
     <Route exact path={appPaths.toLeaseUpShortForm(':applicationId')}>
       <ApplicationPage isLeaseUp />
     </Route>

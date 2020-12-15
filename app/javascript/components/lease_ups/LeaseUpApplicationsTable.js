@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import classNames from 'classnames'
 import { trim } from 'lodash'
@@ -8,7 +8,6 @@ import Button from 'components/atoms/Button'
 import CheckboxCell from 'components/lease_ups/application_page/CheckboxCell'
 import PreferenceRankCell from 'components/lease_ups/application_page/PreferenceRankCell'
 import StatusCell from 'components/lease_ups/application_page/StatusCell'
-import { AppContext } from 'context/Provider'
 import { MAX_SERVER_LIMIT } from 'utils/EagerPagination'
 import { cellFormat } from 'utils/reactTableUtils'
 import { getLeaseUpStatusClass } from 'utils/statusUtils'
@@ -39,22 +38,23 @@ const textCell = ({ value }) => {
 }
 
 const LeaseUpApplicationsTable = ({
+  listingId,
   dataSet,
   onLeaseUpStatusChange,
   onCellClick,
   loading,
+  onFetchData,
   pages,
   rowsPerPage,
   atMaxPages,
   bulkCheckboxesState,
   onBulkCheckboxClick
 }) => {
-  const [
-    {
-      applicationsListData: { page }
-    },
-    actions
-  ] = useContext(AppContext)
+  const [currentPage, setCurrentPage] = useState(0)
+
+  useEffect(() => {
+    setCurrentPage(0)
+  }, [pages])
 
   const maxPagesMsg = `Unfortunately, we can only display the first ${
     MAX_SERVER_LIMIT / rowsPerPage
@@ -207,8 +207,7 @@ const LeaseUpApplicationsTable = ({
       manual
       className='rt-table-status'
       data={dataSet}
-      page={page}
-      onPageChange={(newPage) => actions.applicationsTablePageChanged(newPage)}
+      page={currentPage}
       pages={pages}
       columns={columns}
       getTdProps={getTdProps}
@@ -216,6 +215,10 @@ const LeaseUpApplicationsTable = ({
       defaultPageSize={rowsPerPage}
       sortable={false}
       loading={loading}
+      onFetchData={(state, instance) => {
+        setCurrentPage(state.page)
+        onFetchData(state, instance)
+      }}
       noDataText={noDataMsg}
       getPaginationProps={getPaginationProps}
     />

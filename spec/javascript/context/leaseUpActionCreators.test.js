@@ -1,8 +1,6 @@
 import { createActions } from 'context/leaseUpActionCreators'
 import {
   ACTION_TYPE_APPLICATION_LOADED,
-  ACTION_TYPE_APPLICATION_TABLE_FILTERS_APPLIED,
-  ACTION_TYPE_APPLICATION_TABLE_PAGE_CHANGED,
   ACTION_TYPE_LEFT_APPLICATION_SCOPE,
   ACTION_TYPE_LEFT_LISTING_SCOPE,
   ACTION_TYPE_SELECTED_APPLICATION_CHANGED,
@@ -233,50 +231,6 @@ describe('leaseUpActionCreators', () => {
         number: undefined,
         applicantFullName: undefined
       })
-    })
-  })
-
-  describe('applicationsTableFiltersApplied', () => {
-    test('dispatches correct action', () => {
-      const mockFilters = {
-        preferences: ['pref1']
-      }
-
-      actions.applicationsTableFiltersApplied(mockFilters)
-
-      const dispatchedAction = getDispatchedAction()
-
-      expect(dispatchedAction.type).toEqual(ACTION_TYPE_APPLICATION_TABLE_FILTERS_APPLIED)
-      expect(dispatchedAction.data).toEqual(mockFilters)
-    })
-
-    test('dispatches correct action with null input', () => {
-      actions.applicationsTableFiltersApplied(null)
-
-      const dispatchedAction = getDispatchedAction()
-
-      expect(dispatchedAction.type).toEqual(ACTION_TYPE_APPLICATION_TABLE_FILTERS_APPLIED)
-      expect(dispatchedAction.data).toEqual({})
-    })
-  })
-
-  describe('applicationsTablePageChanged', () => {
-    test('dispatches correct action', () => {
-      actions.applicationsTablePageChanged(3)
-
-      const dispatchedAction = getDispatchedAction()
-
-      expect(dispatchedAction.type).toEqual(ACTION_TYPE_APPLICATION_TABLE_PAGE_CHANGED)
-      expect(dispatchedAction.data).toEqual(3)
-    })
-
-    test('dispatches correct action with null input', () => {
-      actions.applicationsTablePageChanged(null)
-
-      const dispatchedAction = getDispatchedAction()
-
-      expect(dispatchedAction.type).toEqual(ACTION_TYPE_APPLICATION_TABLE_PAGE_CHANGED)
-      expect(dispatchedAction.data).toEqual(0)
     })
   })
 })

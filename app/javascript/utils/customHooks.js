@@ -23,30 +23,14 @@ export const useEffectOnMount = (f) => useEffect(f, [])
  *   if the component is still mounted when the request finishes
  */
 export const useAsyncOnMount = (promiseFn, { onSuccess, onFail, onComplete } = {}) =>
-  useAsync(promiseFn, { onSuccess, onFail, onComplete }, [])
-
-/**
- * First an async request when a dependency changes that will automatically be unsubscribed
- * if the component unmounts before it finishes.
- * @param {() => Promise} promiseFn function that returns a promise when called. If this returns null,
- *   no promise is fired. This is useful for when you want to conditionally fire a promise when
- *   dependencies change.
- * @param {onSuccess, onFail, onComplete} callbackFns functions that will be called
- *   if the component is still mounted when the request finishes
- */
-export const useAsync = (promiseFn, { onSuccess, onFail, onComplete } = {}, dependencyArr) =>
-  useEffect(
-    () => {
-      let isSubscribed = true
-      promiseFn()
-        ?.then((value) => isSubscribed && onSuccess && onSuccess(value))
-        ?.catch((e) => isSubscribed && onFail && onFail(e))
-        ?.finally(() => isSubscribed && onComplete && onComplete())
-      return () => (isSubscribed = false)
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    dependencyArr
-  )
+  useEffectOnMount(() => {
+    let isSubscribed = true
+    promiseFn()
+      .then((value) => isSubscribed && onSuccess && onSuccess(value))
+      .catch((e) => isSubscribed && onFail && onFail(e))
+      .finally(() => isSubscribed && onComplete && onComplete())
+    return () => (isSubscribed = false)
+  })
 
 /**
  * Allows us to check if a component is mounted after a long running async request.

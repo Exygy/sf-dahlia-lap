@@ -1,18 +1,13 @@
 import React, { createContext, useReducer } from 'react'
 
 import { createActions } from 'context/leaseUpActionCreators'
-import Reducer, {
-  getEmptyApplication,
-  getEmptyApplicationsListData,
-  getEmptyListing
-} from 'context/Reducer'
+import Reducer, { getEmptyApplication, getEmptyListing } from 'context/Reducer'
 
 const initialState = {
   breadcrumbData: {
     listing: getEmptyListing(),
     application: getEmptyApplication()
-  },
-  applicationsListData: getEmptyApplicationsListData()
+  }
 }
 
 export const AppContext = createContext()

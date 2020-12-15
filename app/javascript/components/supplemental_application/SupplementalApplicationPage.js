@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 
 import { uniqBy, cloneDeep, some, findIndex } from 'lodash'
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 import apiService from 'apiService'
 import Alerts from 'components/Alerts'
@@ -58,9 +58,7 @@ const setApplicationsDefaults = (application) => {
   return applicationWithDefaults
 }
 
-const SupplementalApplicationPage = () => {
-  // grab the application id from the url: /lease-ups/applications/:applicationId/supplemental
-  const { applicationId } = useParams()
+const SupplementalApplicationPage = ({ applicationId }) => {
   const [state, setState] = useStateObject({
     application: null,
     confirmedPreferencesFailed: false,

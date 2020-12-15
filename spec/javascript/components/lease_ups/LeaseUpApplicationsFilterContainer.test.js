@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { mount } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import { act } from 'react-dom/test-utils'
 
 import Button from 'components/atoms/Button'
@@ -8,7 +8,6 @@ import Checkbox from 'components/atoms/Checkbox'
 import LeaseUpApplicationsFilterContainer from 'components/lease_ups/LeaseUpApplicationsFilterContainer'
 import LeaseUpApplicationsFilters from 'components/lease_ups/LeaseUpApplicationsFilters'
 import ShowHideFiltersButton from 'components/molecules/ShowHideFiltersButton'
-import Provider from 'context/Provider'
 import MultiSelectField from 'utils/form/final_form/MultiSelectField'
 import SearchField from 'utils/form/final_form/SearchField'
 
@@ -17,21 +16,26 @@ const mockOnClearSelectedApplications = jest.fn()
 const mockOnSelectAllApplications = jest.fn()
 
 const getNode = (bulkCheckboxesState = {}) => (
-  <Provider>
-    <LeaseUpApplicationsFilterContainer
-      onSubmit={mockSubmit}
-      onClearSelectedApplications={mockOnClearSelectedApplications}
-      onSelectAllApplications={mockOnSelectAllApplications}
-      bulkCheckboxesState={bulkCheckboxesState}
-      onBulkLeaseUpStatusChange={() => {}}
-      preferences={['pref option 1', 'pref option 2']}
-    />
-  </Provider>
+  <LeaseUpApplicationsFilterContainer
+    onSubmit={mockSubmit}
+    onClearSelectedApplications={mockOnClearSelectedApplications}
+    onSelectAllApplications={mockOnSelectAllApplications}
+    bulkCheckboxesState={bulkCheckboxesState}
+    onBulkLeaseUpStatusChange={() => {}}
+    preferences={['pref option 1', 'pref option 2']}
+  />
 )
+
+const getShallowWrapper = (bulkCheckboxesState = {}) => shallow(getNode(bulkCheckboxesState))
 
 const getWrapper = (bulkCheckboxesState = {}) => mount(getNode(bulkCheckboxesState))
 
 describe('LeaseUpApplicationsFilterContainer', () => {
+  test('it matches the expected snapshot with default preferences', () => {
+    const wrapper = getShallowWrapper()
+    expect(wrapper.find('ReactFinalForm').dive()).toMatchSnapshot()
+  })
+
   describe('status checkbox', () => {
     let wrapper
     describe('when the list of applications is empty', () => {

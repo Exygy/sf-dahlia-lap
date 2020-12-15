@@ -62,34 +62,6 @@ const getWrapper = (url) => {
 }
 
 describe('LeaseUpRoutes', () => {
-  describe('routes for flagged application pages', () => {
-    test('should not render any page (redirect to rails routing) with type=pending', () => {
-      const wrapper = getWrapper('/applications/flagged?type=pending')
-      expect(wrapper.find(MOCK_NAME_APPLICATIONS)).toHaveLength(0)
-      expect(wrapper.find(MOCK_NAME_LISTINGS)).toHaveLength(0)
-      expect(wrapper.find(MOCK_NAME_SUPP)).toHaveLength(0)
-      expect(wrapper.find(MOCK_NAME_SHORT_FORM)).toHaveLength(0)
-    })
-
-    test('should not render any page (redirect to rails routing) with type=duplicate', () => {
-      const wrapper = getWrapper('/applications/flagged?type=duplicate')
-      expect(wrapper.find(MOCK_NAME_APPLICATIONS)).toHaveLength(0)
-      expect(wrapper.find(MOCK_NAME_LISTINGS)).toHaveLength(0)
-      expect(wrapper.find(MOCK_NAME_SUPP)).toHaveLength(0)
-      expect(wrapper.find(MOCK_NAME_SHORT_FORM)).toHaveLength(0)
-    })
-  })
-
-  describe('routes for application edit page', () => {
-    test('should not render any page (redirect to rails routing)', () => {
-      const wrapper = getWrapper('/applications/applicationId/edit')
-      expect(wrapper.find(MOCK_NAME_APPLICATIONS)).toHaveLength(0)
-      expect(wrapper.find(MOCK_NAME_LISTINGS)).toHaveLength(0)
-      expect(wrapper.find(MOCK_NAME_SUPP)).toHaveLength(0)
-      expect(wrapper.find(MOCK_NAME_SHORT_FORM)).toHaveLength(0)
-    })
-  })
-
   describe('applications for lease-up listing paths', () => {
     test('should render the applications page when the exact path is passed in', () => {
       const wrapper = getWrapper('/lease-ups/listings/testListingId')
@@ -133,6 +105,11 @@ describe('LeaseUpRoutes', () => {
       expect(wrapper.find(MOCK_NAME_LISTINGS)).toHaveLength(0)
       expect(wrapper.find(MOCK_NAME_SUPP)).toHaveLength(0)
       expect(wrapper.find(MOCK_NAME_SHORT_FORM)).toHaveLength(0)
+    })
+
+    test('passes the id as a prop to the supp app', () => {
+      const wrapper = getWrapper('/lease-ups/applications/suppAppId/supplemental')
+      expect(wrapper.find(MOCK_NAME_SUPP).props().applicationId).toEqual('suppAppId')
     })
   })
 

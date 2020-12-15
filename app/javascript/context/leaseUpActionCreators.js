@@ -1,9 +1,7 @@
 import {
-  ACTION_TYPE_APPLICATION_LOADED,
-  ACTION_TYPE_APPLICATION_TABLE_FILTERS_APPLIED,
-  ACTION_TYPE_APPLICATION_TABLE_PAGE_CHANGED,
   ACTION_TYPE_LEFT_APPLICATION_SCOPE,
   ACTION_TYPE_LEFT_LISTING_SCOPE,
+  ACTION_TYPE_APPLICATION_LOADED,
   ACTION_TYPE_SELECTED_APPLICATION_CHANGED,
   ACTION_TYPE_SELECTED_LISTING_CHANGED
 } from 'context/Reducer'
@@ -62,10 +60,6 @@ export const createActions = (dispatch) => ({
     dispatch(getApplicationLoadedAction(application, listing)),
   applicationPageLoadComplete: (application, listing) =>
     dispatch(getApplicationLoadedAction(application, listing)),
-  applicationsTableFiltersApplied: (filters) =>
-    dispatch({ type: ACTION_TYPE_APPLICATION_TABLE_FILTERS_APPLIED, data: filters || {} }),
-  applicationsTablePageChanged: (page) =>
-    dispatch({ type: ACTION_TYPE_APPLICATION_TABLE_PAGE_CHANGED, data: page || 0 }),
   applicationsPageMounted: () => dispatch({ type: ACTION_TYPE_LEFT_APPLICATION_SCOPE }),
   listingsPageMounted: () => dispatch({ type: ACTION_TYPE_LEFT_LISTING_SCOPE }),
   applicationsPageLoadComplete: (listing) => dispatch(getListingChangedAction(listing)),
